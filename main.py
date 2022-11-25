@@ -63,15 +63,17 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
 def dealer_draw_card():
     dealer_cards.append(random.choice(cards))
+    #dealer_sum = sum(dealer_cards)
     for ace in player_cards:
-        if ace == 11 and player_sum >21:
-            player_cards[ace] = 1
+        if ace == 11 and dealer_sum >21:
+            dealer_cards[ace] = 1
     #print(dealer_cards)
     if len(dealer_cards)< 2:
         dealer_draw_card()
 
 def player_draw_card():
     player_cards.append(random.choice(cards))
+    #player_sum = sum(player_cards)
     for ace in player_cards:
         if ace == 11 and player_sum >21:
             player_cards[ace] = 1
@@ -90,8 +92,10 @@ def player_draw_card():
 
 player_cards = []
 dealer_cards = []
-player_sum = sum(player_cards)
-dealer_sum = sum(dealer_cards)
+#player_sum = sum(player_cards)
+#dealer_sum = sum(dealer_cards)
+player_sum = int()
+dealer_sum = int()
 
 def blackjack_game():
     '''Blackjack game for final project'''
@@ -143,24 +147,31 @@ def blackjack_game():
             if dealer_sum < 17:
                 dealer_draw_card()
                 #print(dealer_cards)
-            elif dealer_sum < player_sum < 21:
+            elif dealer_sum == 21:
                 print(f"Your final hand: {player_cards}, final score {player_sum}\n"
-                        f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
-                        f"You win! :)")
+                      f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
+                      f"You lose! :(")
+                dealer_turn = False
+                play = False
+                blackjack_game()
+            elif dealer_sum < player_sum <= 21:
+                print(f"Your final hand: {player_cards}, final score {player_sum}\n"
+                      f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
+                      f"You win! :)")
                 dealer_turn = False
                 play = False
                 blackjack_game()
             elif player_sum < dealer_sum < 21:
                 print(f"Your final hand: {player_cards}, final score {player_sum}\n"
-                    f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
-                    f"You lose! :(")
+                      f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
+                      f"You lose! :(")
                 dealer_turn = False
                 play = False
                 blackjack_game()
             else:
                 print(f"Your final hand: {player_cards}, final score {player_sum}\n"
-                        f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
-                        f"You win! :)")
+                      f"Computer's final hand: {dealer_cards}, final score {dealer_sum}\n"
+                      f"You win! :)")
                 dealer_turn = False
                 play = False
                 blackjack_game()
