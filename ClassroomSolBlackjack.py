@@ -120,8 +120,8 @@ def play_game():
         print(f"    Computer's final hand: {computer_cards}, final score: {computer_score}")
         print(compare(user_score,computer_score))
         # TODO Hint 13: Create a function called compare() and pass in the user_score and computer_score. If the computer and user both have the same score, then it's a draw. If the computer has a blackjack (0), then the user loses. If the user has a blackjack (0), then the user wins. If the user_score is over 21, then the user loses. If the computer_score is over 21, then the computer loses. If none of the above, then the player with the highest score wins.
-        while input("Do you want to play a game of Blackjack? Type 'y' or 'n") == 'y':
-            os.system('cls')
-            play_game()
-play_game()
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n") == 'y':
+    os.system('cls')
+    play_game()
+
         # TODO Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
